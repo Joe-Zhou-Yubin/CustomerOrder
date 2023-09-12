@@ -10,41 +10,41 @@ Springboot-React-MSSQL
 ---
 
 ## Home Page
-<img src="https://github.com/Joe-Zhou-Yubin/ProjectManager/raw/main/screenshots/Home_Page.png" alt="Login Page Screenshot" width="600">
+<img src="https://github.com/Joe-Zhou-Yubin/CustomerOrder/raw/main/screenshots/Home_Page.png" alt="Login Page Screenshot" width="600">
 
 ---
 
 ## Enterprise Page
-<img src="https://github.com/Joe-Zhou-Yubin/ProjectManager/raw/main/screenshots/Enterprise_Table.png" alt="Login Page Screenshot" width="600">
+<img src="https://github.com/Joe-Zhou-Yubin/CustomerOrder/raw/main/screenshots/Enterprise_Table.png" alt="Login Page Screenshot" width="600">
 
 ---
 
 ## Talent Page
-<img src="https://github.com/Joe-Zhou-Yubin/ProjectManager/raw/main/screenshots/Talent_Table.png" alt="Login Page Screenshot" width="600">
+<img src="https://github.com/Joe-Zhou-Yubin/CustomerOrder/raw/main/screenshots/Talent_Table.png" alt="Login Page Screenshot" width="600">
 
 ---
 
 ## User Dashboard Page
-<img src="https://github.com/Joe-Zhou-Yubin/ProjectManager/raw/main/screenshots/User_Dashboard.png" alt="Login Page Screenshot" width="600">
+<img src="https://github.com/Joe-Zhou-Yubin/CustomerOrder/raw/main/screenshots/User_Dashboard.png" alt="Login Page Screenshot" width="600">
 
 ---
 
 ## CO Page
-<img src="https://github.com/Joe-Zhou-Yubin/ProjectManager/raw/main/screenshots/CO_Page.png" alt="Login Page Screenshot" width="600">
+<img src="https://github.com/Joe-Zhou-Yubin/CustomerOrder/raw/main/screenshots/CO_Page.png" alt="Login Page Screenshot" width="600">
 
 ---
 
 ## Create CO Page
-<img src="https://github.com/Joe-Zhou-Yubin/ProjectManager/raw/main/screenshots/Create_CO.png" alt="Login Page Screenshot" width="600">
+<img src="https://github.com/Joe-Zhou-Yubin/CustomerOrder/raw/main/screenshots/Create_CO.png" alt="Login Page Screenshot" width="600">
 
 ---
 
 ## Create Milestone Page
-<img src="https://github.com/Joe-Zhou-Yubin/ProjectManager/raw/main/screenshots/Create_Milestone.png" alt="Login Page Screenshot" width="600">
+<img src="https://github.com/Joe-Zhou-Yubin/CustomerOrder/raw/main/screenshots/Create_Milestone.png" alt="Login Page Screenshot" width="600">
 
 ---
 
 ## Create User Page
-<img src="https://github.com/Joe-Zhou-Yubin/ProjectManager/raw/main/screenshots/Create_User.png" alt="Login Page Screenshot" width="600">
+<img src="https://github.com/Joe-Zhou-Yubin/CustomerOrder/raw/main/screenshots/Create_User.png" alt="Login Page Screenshot" width="600">
 
 ---
