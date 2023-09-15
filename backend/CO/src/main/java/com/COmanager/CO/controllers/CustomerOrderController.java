@@ -196,7 +196,7 @@ public class CustomerOrderController {
             if (customerOrderOptional.isPresent()) {
                 CustomerOrder customerOrder = customerOrderOptional.get();
 
-                // Update the status to true
+                // Update the status to false
                 customerOrder.setStatus(false);
 
                 // Save the updated customer order
