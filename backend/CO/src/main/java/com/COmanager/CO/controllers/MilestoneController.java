@@ -104,7 +104,7 @@ public class MilestoneController {
             if (milestoneOptional.isPresent()) {
                 Milestone milestone = milestoneOptional.get();
                 
-                // Set the paid status to true
+                // Set the paid status to false
                 milestone.setPaid(false);
                 
                 milestoneRepository.save(milestone);
