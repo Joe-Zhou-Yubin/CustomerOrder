@@ -55,21 +55,28 @@ public class AuthController {
 
   @Autowired
   JwtUtils jwtUtils;
-
+  
+//Handle user login
   @PostMapping("/signin")
   public ResponseEntity<?> authenticateUser(@Valid @RequestBody LoginRequest loginRequest) {
-
+	  
+      // Authenticate the user using Spring Security
     Authentication authentication = authenticationManager.authenticate(
         new UsernamePasswordAuthenticationToken(loginRequest.getUsername(), loginRequest.getPassword()));
-
+    
+    // Set the authenticated user's context
     SecurityContextHolder.getContext().setAuthentication(authentication);
+    
+    // Generate a JWT token for the authenticated user
     String jwt = jwtUtils.generateJwtToken(authentication);
     
+    // Extract user details from the authenticated user
     UserDetailsImpl userDetails = (UserDetailsImpl) authentication.getPrincipal();    
     List<String> roles = userDetails.getAuthorities().stream()
         .map(item -> item.getAuthority())
         .collect(Collectors.toList());
-
+    
+    // Return the JWT token and user information in the response
     return ResponseEntity.ok(new JwtResponse(jwt, 
                          userDetails.getId(), 
                          userDetails.getUsername(), 
@@ -77,18 +84,21 @@ public class AuthController {
                          userDetails.getMobile(),
                          roles));
   }
-
+  
+  // Handle user registration
   @PostMapping("/signup")
   public ResponseEntity<?> registerUser(@Valid @RequestBody SignupRequest signUpRequest) {
       System.out.println("Received signup request for username: " + signUpRequest.getUsername());
-
+      
+      // Check if the username is already taken
       if (userRepository.existsByUsername(signUpRequest.getUsername())) {
           System.out.println("Username is already taken.");
           return ResponseEntity
               .badRequest()
               .body(new MessageResponse("Error: Username is already taken!"));
       }
-
+      
+      // Check if the email is already in use
       if (userRepository.existsByEmail(signUpRequest.getEmail())) {
           System.out.println("Email is already in use.");
           return ResponseEntity
@@ -107,11 +117,14 @@ public class AuthController {
 
       if (strRoles == null) {
           System.out.println("No roles specified, assigning default role.");
+          
+          // Assign a default role if no roles are specified
           Role userRole = roleRepository.findByName(ERole.ROLE_MEMBER)
               .orElseThrow(() -> new RuntimeException("Error: Role is not found."));
           roles.add(userRole);
       } else {
           System.out.println("Assigning roles: " + strRoles);
+          // Assign roles based on the provided role names
           strRoles.forEach(role -> {
               switch (role) {
                   case "admin":
@@ -135,13 +148,14 @@ public class AuthController {
       return ResponseEntity.ok(new MessageResponse("User registered successfully!"));
   }
 
-  
+  // Get a list of all users
   @GetMapping("/users")
   public ResponseEntity<List<User>> getAllUsers() {
     List<User> users = userRepository.findAll();
     return ResponseEntity.ok(users);
   }
   
+  // Delete a user by their ID
   @DeleteMapping("/delete/{userId}")
   public ResponseEntity<?> deleteUserByUserId(@PathVariable String userId) {
     Optional<User> userOptional = userRepository.findByUserId(userId);

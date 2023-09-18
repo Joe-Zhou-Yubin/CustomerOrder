@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @RequestMapping("/api/test")
 public class TestController {
+	// Testing controller for User Perms
   @GetMapping("/all")
   public String allAccess() {
     return "Public Content.";

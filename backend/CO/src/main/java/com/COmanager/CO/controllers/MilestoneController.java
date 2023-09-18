@@ -19,7 +19,8 @@ public class MilestoneController {
 
     @Autowired
     private MilestoneRepository milestoneRepository;
-
+    
+    // Create a new milestone associated with a specific order
     @PostMapping("/create/{orderNumber}")
     public ResponseEntity<?> createMilestone(
         @PathVariable String orderNumber,
@@ -55,7 +56,7 @@ public class MilestoneController {
         return uuidStr;
     }
     
-    
+    // Get all milestones
     @GetMapping("/all")
     public ResponseEntity<?> getAllMilestones() {
         try {
@@ -66,6 +67,7 @@ public class MilestoneController {
         }
     }
     
+    // Get all milestones associated with a specific order
     @GetMapping("/getall/{orderNumber}")
     public ResponseEntity<?> getAllMilestonesByOrderNumber(@PathVariable String orderNumber) {
         try {
@@ -76,6 +78,7 @@ public class MilestoneController {
         }
     }
     
+    // Update the paid status of a milestone by its milestone ID
     @PutMapping("/updatepaid/{milestoneId}")
     public ResponseEntity<?> updatePaidStatus(@PathVariable String milestoneId) {
         try {
@@ -97,6 +100,7 @@ public class MilestoneController {
         }
     }
     
+    // Update the unpaid status of a milestone by its milestone ID
     @PutMapping("/updateunpaid/{milestoneId}")
     public ResponseEntity<?> updateUnpaidStatus(@PathVariable String milestoneId) {
         try {
@@ -104,7 +108,7 @@ public class MilestoneController {
             if (milestoneOptional.isPresent()) {
                 Milestone milestone = milestoneOptional.get();
                 
-                // Set the paid status to true
+                // Set the paid status to false
                 milestone.setPaid(false);
                 
                 milestoneRepository.save(milestone);
@@ -118,6 +122,7 @@ public class MilestoneController {
         }
     }
     
+    // Calculate the total paid amount for a specific order
     @GetMapping("/totalpaidAmount/{orderNumber}")
     public ResponseEntity<?> calculateTotalAmountByOrderNumber(@PathVariable String orderNumber) {
         try {
@@ -134,6 +139,7 @@ public class MilestoneController {
         }
     }
     
+    // Calculate the total unpaid amount for a specific order
     @GetMapping("/totalunpaidAmount/{orderNumber}")
     public ResponseEntity<?> calculateTotalUnpaidAmountByOrderNumber(@PathVariable String orderNumber) {
         try {
@@ -150,7 +156,7 @@ public class MilestoneController {
         }
     }
     
-    
+    // Update a milestone by its milestone ID
     @PutMapping("/update/{milestoneId}")
     public ResponseEntity<?> updateMilestone(
         @PathVariable String milestoneId,
@@ -177,7 +183,8 @@ public class MilestoneController {
             return ResponseEntity.badRequest().body("Error updating milestone: " + e.getMessage());
         }
     }
-
+    
+    // Delete a milestone by its milestone ID
     @DeleteMapping("/delete/{milestoneId}")
     public ResponseEntity<?> deleteMilestone(@PathVariable String milestoneId) {
         try {

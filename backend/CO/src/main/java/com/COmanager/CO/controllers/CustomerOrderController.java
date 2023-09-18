@@ -23,7 +23,8 @@ public class CustomerOrderController {
 
     @Autowired
     private CustomerOrderRepository customerOrderRepository;
-
+    
+    // Create a new customer order
     @PostMapping("/create")
     public ResponseEntity<?> createCustomerOrder(@RequestBody CustomerOrder customerOrder) {
         try {
@@ -61,7 +62,7 @@ public class CustomerOrderController {
         return uuidStr;
     }
     
-    //delete based on order id
+    // Delete a customer order by its ID
     @DeleteMapping("/delete/{orderId}")
     public ResponseEntity<?> deleteCustomerOrder(@PathVariable Long orderId) {
         try {
@@ -81,7 +82,8 @@ public class CustomerOrderController {
             return ResponseEntity.badRequest().body("Error deleting customer order: " + e.getMessage());
         }
     }
-    //delete based on order number
+    
+    // Delete a customer order by its order number
     @DeleteMapping("/deleteon/{orderNumber}")
     public ResponseEntity<?> deleteCustomerOrderByOrderNumber(@PathVariable String orderNumber) {
         try {
@@ -102,6 +104,7 @@ public class CustomerOrderController {
         }
     }
     
+    // Update a customer order by its order number
     @PutMapping("/update/{orderNumber}")
     public ResponseEntity<?> updateCustomerOrderByOrderNumber(@PathVariable String orderNumber, @RequestBody CustomerOrder updatedCustomerOrder) {
         try {
@@ -130,7 +133,7 @@ public class CustomerOrderController {
         }
     }
     
-    //get all co
+    // Get all customer orders with pagination
     @GetMapping("/all")
     public ResponseEntity<?> getAllCustomerOrders(@RequestParam(defaultValue = "0") int page,
                                                   @RequestParam(defaultValue = "10") int size) {
@@ -148,7 +151,7 @@ public class CustomerOrderController {
     }
 
     
-    //get specific co
+    // Get a specific customer order by its order number
     @GetMapping("/get/{orderNumber}")
     public ResponseEntity<?> getCustomerOrderByOrderNumber(@PathVariable String orderNumber) {
         try {
@@ -165,6 +168,7 @@ public class CustomerOrderController {
         }
     }
     
+    // Update the status of a customer order to true by its order number
     @PutMapping("/updateStatus/{orderNumber}")
     public ResponseEntity<?> updateCustomerOrderStatusByOrderNumber(@PathVariable String orderNumber) {
         try {
@@ -188,6 +192,7 @@ public class CustomerOrderController {
         }
     }
     
+    // Update the status of a customer order to false by its order number
     @PutMapping("/unupdateStatus/{orderNumber}")
     public ResponseEntity<?> unupdateCustomerOrderStatusByOrderNumber(@PathVariable String orderNumber) {
         try {
@@ -196,7 +201,7 @@ public class CustomerOrderController {
             if (customerOrderOptional.isPresent()) {
                 CustomerOrder customerOrder = customerOrderOptional.get();
 
-                // Update the status to true
+                // Update the status to false
                 customerOrder.setStatus(false);
 
                 // Save the updated customer order
@@ -211,7 +216,7 @@ public class CustomerOrderController {
         }
     }
 
-    
+    // Get all customer orders of type "enterprise" with pagination
     @GetMapping("/getAllEnterpriseOrders")
     public ResponseEntity<?> getAllEnterpriseOrders(
             @RequestParam(defaultValue = "0") int page,
@@ -229,7 +234,8 @@ public class CustomerOrderController {
             return ResponseEntity.badRequest().body("Error retrieving enterprise orders: " + e.getMessage());
         }
     }
-
+    
+    // Get all customer orders of type "talent" with pagination
     @GetMapping("/getAllTalentOrders")
     public ResponseEntity<?> getAllTalentOrders(
             @RequestParam(defaultValue = "0") int page,
