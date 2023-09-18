@@ -4,6 +4,20 @@ Springboot-React-SQL Server
 <a href="https://www.canva.com/design/DAFuOfOPFCA/PhGXnAwNd9kytqClGcwm0Q/view?utm_content=DAFuOfOPFCA&utm_campaign=designshare&utm_medium=link&utm_source=publishsharelink" target="_blank">Presentation Deck</a><br>
 <a href="https://www.figma.com/file/7YnSvMMdWOZzN4FUtIZoCd/Customer-Order-Management?type=whiteboard&node-id=0%3A1&t=u5rC0cMQIUWVsTUN-1" target="_blank">Figma Design</a><br>
 
+To implement, Gitclone repository and utilise the IDE of your choice (for Backend -- Eclipse, Frontend -- VS Code)<br>
+Ensure that prereq like java, jdbc and nodejs are installed before compiling project<br>
+
+Backend: mvn clean install for pom.xml dependency file<br>
+mvn run to run project (Edit application.properties file to your database endpoint)<br>
+
+Frontend: npm install (import all npm dependencies)<br>
+npm start (run frontend program)<br>
+
+Database: Create in table (roles) 1. ROLE_MEMBER 2. ROLE_ADMIN<br>
+Create admin user as there are no signup endpoints available without a proper user for security purposes<br>
+(only admin is able to create/delete users)<br>
+Refer to <a href="" target="_blank">Json Payload Document</a> on how payload should be parsed into HTTP Request<br>
+
 ## Login Page
 <img src="https://github.com/Joe-Zhou-Yubin/CustomerOrder/raw/main/screenshots/Login_Page.png" alt="Login Page Screenshot" width="600">
 
