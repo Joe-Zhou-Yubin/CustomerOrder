@@ -88,11 +88,11 @@ public class AuthController {
   // Handle user registration
   @PostMapping("/signup")
   public ResponseEntity<?> registerUser(@Valid @RequestBody SignupRequest signUpRequest) {
-      System.out.println("Received signup request for username: " + signUpRequest.getUsername());
+//      System.out.println("Received signup request for username: " + signUpRequest.getUsername());
       
       // Check if the username is already taken
       if (userRepository.existsByUsername(signUpRequest.getUsername())) {
-          System.out.println("Username is already taken.");
+//          System.out.println("Username is already taken.");
           return ResponseEntity
               .badRequest()
               .body(new MessageResponse("Error: Username is already taken!"));
@@ -100,7 +100,7 @@ public class AuthController {
       
       // Check if the email is already in use
       if (userRepository.existsByEmail(signUpRequest.getEmail())) {
-          System.out.println("Email is already in use.");
+//          System.out.println("Email is already in use.");
           return ResponseEntity
               .badRequest()
               .body(new MessageResponse("Error: Email is already in use!"));
@@ -116,14 +116,14 @@ public class AuthController {
       Set<Role> roles = new HashSet<>();
 
       if (strRoles == null) {
-          System.out.println("No roles specified, assigning default role.");
+//          System.out.println("No roles specified, assigning default role.");
           
           // Assign a default role if no roles are specified
           Role userRole = roleRepository.findByName(ERole.ROLE_MEMBER)
               .orElseThrow(() -> new RuntimeException("Error: Role is not found."));
           roles.add(userRole);
       } else {
-          System.out.println("Assigning roles: " + strRoles);
+//          System.out.println("Assigning roles: " + strRoles);
           // Assign roles based on the provided role names
           strRoles.forEach(role -> {
               switch (role) {
@@ -144,7 +144,7 @@ public class AuthController {
       user.setRoles(roles);
       userRepository.save(user);
 
-      System.out.println("User registered successfully!");
+//      System.out.println("User registered successfully!");
       return ResponseEntity.ok(new MessageResponse("User registered successfully!"));
   }
 
